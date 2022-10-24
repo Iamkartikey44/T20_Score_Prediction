@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cricket Score Prediction</title>
+    
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+    <link rel="icon"  href="{{url_for('static',filename='logo.jpg')}}">
+
+    <script src="{{url_for('static',filename = 'js_file.js')}}"></script>
+    <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+
+<body>
+    <div class="cont">
+        <button onclick="myfunc2()" class="button1">dark</button>
+
+    </div>
+
+    <div class="container">
+        <h2 class="container-heading"><span class="heading-first">T20 Score Prediction </span></h2>
+        <div class="description">
+            <p>A Machine Learning Web App, Built with Flask, Deployed using Python Anywhere</p>
+        </div>
+    </div>
+    <!--Prediction Area-->
+    <div class="prediction-area">
+        <!--IPL Banner 1-->
+        <div class='ipl-banner-left'>
+            <div class="slider-frame">
+                <div class="slide-images-up">
+                    <!--Images 1-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='ind.jpg')}}" alt="India Team">
+                    </div>
+                    <!--Images 2-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='aus.jpg')}}" alt="Australia Team">
+                    </div>
+                    <!--Images 3-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='eng.jpg')}}" alt="England Team">
+                    </div>
+                    <!--Images 4-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='sa.jpg')}}" alt="South Africa">
+                    </div>
+                    <!--Images 5-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='pk.jpg')}}" alt="Pakistan Team">
+                    </div>
+                    <!--Images 6-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='bangladesh.jpg')}}"
+                            alt="Bangladesh Team">
+                    </div>
+                    <!--Images 7-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='nz.jpg')}}" alt="New Zealand">
+                    </div>
+                    <!--Images 8-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='main.jpg')}}"
+                            alt="T20 World">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Prediction Form-->
+        <div class="div2">
+            
+            <!--Batting Team Dropdown-->
+            <select name="batting-team" class="form-input  align-center" id="batting">
+                <option value="none">--- Select a Batting team ---</option>
+                <option value="Australia">Australia</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="England">England</option>
+                <option value="India">India</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Namibia">Namibia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Scotland">Scotland</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="West Indies">West Indies</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+
+            </select><br>
+            <!--Bowling Team Dropdown-->
+            <select name="bowling-team" class="form-input  align-center" id="bowling">
+                <option value="none">--- Select a Bowling team ---</option>
+                <option value="Australia">Australia</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="England">England</option>
+                <option value="India">India</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Namibia">Namibia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Scotland">Scotland</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="West Indies">West Indies</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+            </select><br>
+
+            <select name="venue" class="form-input  align-center" id="venue"><br>
+                <option value="none">--- Select a Venue ---</option>
+                {% for v in venue %}
+                <option value="{{ v }}">{{ v }}</option>
+                {% endfor %}
+
+
+            </select><br>
+            <input id="over" class="form-input" type="text" name="overs" placeholder="Overs (>= 5.0) eg. 7.2"><br>
+            <input id="run" class="form-input" type="text" name="runs" placeholder="Runs eg. 64"><br>
+            <input id="wicket" class="form-input" type="text" name="wickets" placeholder="Wickets eg. 4"><br>
+            <input id="run_last5" class="form-input" type="text" name="runs_in_prev_5"
+                placeholder="Runs scored in previous 5 Overs eg. 42"><br>
+           
+
+            <button type="submit" class="myButton" onclick="myfunc()" value="Predict Score">Predict Score</button>
+
+           
+
+        </div>
+        <!--IPL Banner 2-->
+        <div class="ipl-banner-right">
+            <div class="slider-frame">
+                <div class="slide-images-down">
+                    <!--Image 1-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='main.jpg')}}"
+                            alt="World Cup">
+                    </div>
+                    <!--Images 2-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='nz.jpg')}}" alt="New Zealand Team">
+                    </div>
+                    <!--Images 3-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='bangladesh.jpg')}}"
+                            alt="Bangladesh Team">
+                    </div>
+                    <!--Images 4-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='pk.jpg')}}" alt="Pakistan Team">
+                    </div>
+                    <!--Images 5-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='sa.jpg')}}" alt="South Africa">
+                    </div>
+                    <!--Images 6-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='eng.jpg')}}" alt="England Team">
+                    </div>
+                    <!--Images 7-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='aus.jpg')}}" alt="Australia Team">
+                    </div>
+                    <!--Images 8-->
+                    <div class="image-container">
+                        <img class="image-width" src="{{url_for('static',filename='ind.jpg')}}" alt="India Team">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Footer-->
+    <div class="footer">
+        <div class="contact">
+            <a target="_blank" href="https://github.com/Iamkartikey44"><i
+                    class="fab fa-github fa-lg contact-icon"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/kartikey-tiwari-32bb90187"><i
+                    class="fab fa-linkedin fa-lg contact-icon"></i></a>
+        </div>
+        <p class="footer-description">Made with ❤️ by Kartikey Tiwari.</p>
+    </div>
+
+
+</body>
+<script>
+    function myfunc2() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+</script>
+
+</html>
